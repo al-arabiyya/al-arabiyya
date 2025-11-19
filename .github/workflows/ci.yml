@@ -7,7 +7,6 @@ on:
     branches: ["main"]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
 
@@ -29,9 +28,9 @@ jobs:
 
           # Settings
           echo "'app'," >> core/settings.py
-          echo "'app.apps.home'," >> core/settings.py
-          echo "'app.cms'," >> core/settings.py
-          echo "'app.ui'," >> core/settings.py
+          echo "'al_arabiyya.apps.home'," >> core/settings.py
+          echo "'al_arabiyya.cms'," >> core/settings.py
+          echo "'al_arabiyya.ui'," >> core/settings.py
           echo "'rest_wind'," >> core/settings.py
           echo "'rest_framework'," >> core/settings.py
           echo "'wagtail.contrib.forms'," >> core/settings.py
@@ -51,7 +50,7 @@ jobs:
 
           # URLConf
           echo "from django.urls import include" >> core/urls.py
-          echo "urlpatterns += [path('', include('app.ui.urls')), path('api/', include('app.api.urls')),]" >> core/urls.py
+          echo "urlpatterns += [path('', include('al_arabiyya.ui.urls')), path('api/', include('al_arabiyya.api.urls')),]" >> core/urls.py
 
       - name: Run the app
         run: |

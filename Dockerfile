@@ -13,14 +13,6 @@ ENV PYTHONUNBUFFERED=1
 COPY requirements.txt .
 RUN python -m pip install -r requirements.txt
 
-# Create new Django project and configure the settings
-RUN python -m django startproject core
-RUN cp -r app core
-RUN echo "AUTH_USER_MODEL = 'users.User'" >> core/settings.py
-RUN echo "INSTALLED_APPS += ['app', 'app.books', 'app.users', 'drf_redesign', 'rest_framework']" >> core/settings.py
-RUN echo "from django.urls import include" >> core/urls.py
-RUN echo "urlpatterns += [path('', include('app.urls'))" >> core/urls.py
-
 WORKDIR /app
 COPY . /app
 
