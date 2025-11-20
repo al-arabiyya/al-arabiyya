@@ -1,22 +1,24 @@
 [tool.poetry]
 name = "al-arabiyya"
 version = "0.1.0"
-description = "A Wagtail CMS app template with dependency management and DevOps best practices."
+description = "Al-Arabiyya: Cutting Edge tech to support The Arabic Language."
 authors = ["Yousef Abu Shanab <josephyousef249@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{ include = "app" }]
+packages = [{ include = "al_arabiyya" }]
 homepage = "https://github.com/al-arabiyya/al-arabiyya"
 repository = "https://github.com/al-arabiyya/al-arabiyya"
 documentation = "https://github.com/al-arabiyya/al-arabiyya"
 
 [tool.poetry.dependencies]
-python = "^3.11"
-django = "^5.2.1"
+python = ">=3.11"
+django = ">=5.2.1"
+django-allauth = ">=65.3.0"
+django-allauth-xui = ">=0.1.0"
 djangorestframework = ">=3.16.0"
 drf-restwind = ">=0.2.0"
-wagtail = ">=7.0"
-wagtail-tw-blocks = ">=0.2.4"
+wagtail = ">=7.3"
+wagtail-tw-blocks = ">=0.3.0"
 
 
 [tool.poetry.group.dev.dependencies]

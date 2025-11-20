@@ -1,0 +1,65 @@
+{% load i18n %}
+
+<!---->
+{% if is_paginated %}
+<ol class="flex items-center justify-center gap-2 flex-wrap">
+  {% if page_obj.has_previous %}
+  <li class="tooltip tooltip-top tooltip-accent" data-tip="{% trans 'First' %}">
+    <a
+      href="?page=1"
+      class="btn btn-square btn-sm btn-accent md:btn-md 2xl:btn-lg"
+    >
+      <i
+        data-lucide="chevron-first"
+        class="size-4 lg:size-6 rtl:rotate-180"
+      ></i>
+      <span class="sr-only">{% trans 'First' %}</span>
+    </a>
+  </li>
+
+  <li
+    class="tooltip tooltip-top tooltip-primary"
+    data-tip="{% trans 'Previous' %}"
+  >
+    <a
+      href="?page={{ page_obj.previous_page_number }}"
+      class="btn btn-square btn-sm btn-soft btn-primary md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="chevron-left" class="size-4 lg:size-6 rtl:rotate-180"></i>
+      <span class="sr-only">{% trans 'Previous' %}</span>
+    </a>
+  </li>
+  {% endif %}
+
+  <li class="tooltip tooltip-top tooltip-info" data-tip="{% trans 'Current' %}">
+    <button class="btn btn-sm btn-soft btn-info md:btn-md 2xl:btn-lg">
+      {{ page_obj.number }} {% trans 'of' %} {{ page_obj.paginator.num_pages }}
+    </button>
+  </li>
+
+  {% if page_obj.has_next %}
+  <li class="tooltip tooltip-top tooltip-primary" data-tip="{% trans 'Next' %}">
+    <a
+      href="?page={{ page_obj.next_page_number }}"
+      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+    >
+      <i
+        data-lucide="chevron-right"
+        class="size-4 lg:size-6 rtl:rotate-180"
+      ></i>
+      <span class="sr-only">{% trans 'Next' %}</span>
+    </a>
+  </li>
+
+  <li class="tooltip tooltip-top tooltip-accent" data-tip="{% trans 'Last' %}">
+    <a
+      href="?page={{ page_obj.paginator.num_pages }}"
+      class="btn btn-square btn-sm btn-accent md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="chevron-last" class="size-4 lg:size-6 rtl:rotate-180"></i>
+      <span class="sr-only">{% trans 'Last' %}</span>
+    </a>
+  </li>
+  {% endif %}
+</ol>
+{% endif %}
